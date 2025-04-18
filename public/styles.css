@@ -1,0 +1,25 @@
+@font-face{
+    font-family: kesha1;
+    src:url(fonts/kesha1.ttf);
+}
+
+@font-face{
+    font-family: kesha2;
+    src:url(fonts/kesha2.ttf);
+}
+
+.header {
+    height: 100px;
+    background-color: #04030F;
+    font-family: kesha1;
+    display: flex;            /* make it a flex container */
+    align-items: center;      /* vertical centering */
+  }
+
+.album-img {
+    width: 250px;
+    height: 250px;
+  
+    object-fit: cover;
+  }
+  
