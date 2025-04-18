@@ -1,7 +1,7 @@
 "id","title","release_date","release_year","duration","song_count"
-1,"Animal","2010-01-01T06:00:00.000Z",2010,"{""hours"":1,""minutes"":6}",18
-2,"Warrior","2012-11-30T06:00:00.000Z",2012,"{""hours"":1,""minutes"":34}",24
-3,"Rainbow","2017-08-11T05:00:00.000Z",2017,"{""minutes"":48,""seconds"":44}",14
-4,"High Road","2020-01-31T06:00:00.000Z",2020,"{""minutes"":52,""seconds"":15}",16
-5,"Gag Order","2023-05-19T05:00:00.000Z",2023,"{""minutes"":38,""seconds"":58}",13
-6,"Period","2025-07-04T05:00:00.000Z",2025,"{""hours"":1,""minutes"":34}",24
+1,"Animal","January 1, 2010",2010,"1hr 6min",18
+2,"Warrior","November 30, 2012",2012,"1hr 34min",24
+3,"Rainbow","August 11, 2017",2017,"48min 44sec",14
+4,"High Road","January 31, 2020",2020,"52min 15sec",16
+5,"Gag Order","May 19, 2023",2023,"38min 58sec",13
+6,"Period","July 4, 2025",2025,"1hr 34min",24
