@@ -1,0 +1,15 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "172.17.32.1",
+            "port": 5432,
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "name": "LOCALsql",
+            "database": "kesha",
+            "username": "postgres",
+            "connectionTimeout": 30
+        }
+    ]
+}
