@@ -1,431 +1,554 @@
--- Album 1 tracks
-INSERT INTO songs (title, album_id, track_number, duration)
+INSERT INTO songs (id, title, album_id, track_number, duration)
 VALUES (
+        1,
         'Your Love Is My Drug',
         1,
         1,
-        '00:03:06'
+        '00:03:06'::INTERVAL
     ),
     (
+        2,
         'TiK ToK',
         1,
         2,
-        '00:03:19'
+        '00:03:19'::INTERVAL
     ),
     (
+        3,
         'Take It Off',
         1,
         3,
-        '00:03:35'
+        '00:03:35'::INTERVAL
     ),
     (
+        4,
         'Kiss N Tell',
         1,
         4,
-        '00:03:27'
+        '00:03:27'::INTERVAL
     ),
     (
+        5,
         'Stephen',
         1,
         5,
-        '00:03:32'
+        '00:03:32'::INTERVAL
     ),
     (
+        6,
         'Blah Blah Blah (feat. 3OH!3)',
         1,
         6,
-        '00:02:52'
+        '00:02:52'::INTERVAL
     ),
     (
+        7,
         'Hungover',
         1,
         7,
-        '00:03:52'
+        '00:03:52'::INTERVAL
     ),
     (
+        8,
         'Party at a Rich Dude''s House',
         1,
         8,
-        '00:02:55'
+        '00:02:55'::INTERVAL
     ),
     (
+        9,
         'Backstabber',
         1,
         9,
-        '00:03:06'
+        '00:03:06'::INTERVAL
     ),
     (
+        10,
         'Blind',
         1,
         10,
-        '00:03:17'
+        '00:03:17'::INTERVAL
     ),
     (
+        11,
         'Dinosaur',
         1,
         11,
-        '00:02:55'
+        '00:02:55'::INTERVAL
     ),
     (
+        12,
         'Dancing with Tears in My Eyes',
         1,
         12,
-        '00:03:29'
+        '00:03:29'::INTERVAL
     ),
     (
+        13,
         'Boots & Boys',
         1,
         13,
-        '00:02:56'
+        '00:02:56'::INTERVAL
     ),
     (
+        14,
         'Animal',
         1,
         14,
-        '00:03:57'
-    );
--- Album 2 tracks
-INSERT INTO songs (title, album_id, track_number, duration)
-VALUES (
+        '00:03:57'::INTERVAL
+    ),
+    (
+        15,
         'Warrior',
         2,
         1,
-        '00:04:00'
+        '00:04:00'::INTERVAL
     ),
     (
+        16,
         'Die Young',
         2,
         2,
-        '00:03:32'
+        '00:03:32'::INTERVAL
     ),
     (
+        17,
         'C''Mon',
         2,
         3,
-        '00:03:34'
+        '00:03:34'::INTERVAL
     ),
     (
+        18,
         'Thinking of You',
         2,
         4,
-        '00:03:04'
+        '00:03:04'::INTERVAL
     ),
     (
+        19,
         'Crazy Kids',
         2,
         5,
-        '00:03:50'
+        '00:03:50'::INTERVAL
     ),
     (
+        20,
         'Wherever You Are',
         2,
         6,
-        '00:03:58'
+        '00:03:58'::INTERVAL
     ),
     (
+        21,
         'Dirty Love (featuring Iggy Pop)',
         2,
         7,
-        '00:02:44'
+        '00:02:44'::INTERVAL
     ),
     (
+        22,
         'Wonderland',
         2,
         8,
-        '00:03:42'
+        '00:03:42'::INTERVAL
     ),
     (
+        23,
         'Only Wanna Dance with You',
         2,
         9,
-        '00:03:31'
+        '00:03:31'::INTERVAL
     ),
     (
+        24,
         'Supernatural',
         2,
         10,
-        '00:04:10'
+        '00:04:10'::INTERVAL
     ),
     (
+        25,
         'All That Matters (The Beautiful Life)',
         2,
         11,
-        '00:03:37'
+        '00:03:37'::INTERVAL
     ),
     (
+        26,
         'Love into the Light',
         2,
         12,
-        '00:04:46'
-    );
--- Album 3 tracks
-INSERT INTO songs (title, album_id, track_number, duration)
-VALUES (
+        '00:04:46'::INTERVAL
+    ),
+    (
+        27,
         'Bastards',
         3,
         1,
-        '00:03:51'
+        '00:03:51'::INTERVAL
     ),
     (
+        28,
         'Let ''Em Talk (featuring Eagles of Death Metal)',
         3,
         2,
-        '00:03:05'
+        '00:03:05'::INTERVAL
     ),
     (
+        29,
         'Woman (featuring the Dap-Kings Horns)',
         3,
         3,
-        '00:03:51'
+        '00:03:51'::INTERVAL
     ),
     (
+        30,
         'Hymn',
         3,
         4,
-        '00:03:16'
+        '00:03:16'::INTERVAL
     ),
     (
+        31,
         'Praying',
         3,
         5,
-        '00:03:50'
+        '00:03:50'::INTERVAL
     ),
     (
+        32,
         'Learn to Let Go',
         3,
         6,
-        '00:03:37'
+        '00:03:37'::INTERVAL
     ),
     (
+        33,
         'Finding You',
         3,
         7,
-        '00:02:52'
+        '00:02:52'::INTERVAL
     ),
     (
+        34,
         'Rainbow',
         3,
         8,
-        '00:03:38'
+        '00:03:38'::INTERVAL
     ),
     (
+        35,
         'Hunt You Down',
         3,
         9,
-        '00:03:17'
+        '00:03:17'::INTERVAL
     ),
     (
+        36,
         'Boogie Feet (featuring Eagles of Death Metal)',
         3,
         10,
-        '00:02:53'
+        '00:02:53'::INTERVAL
     ),
     (
+        37,
         'Boots',
         3,
         11,
-        '00:03:03'
+        '00:03:03'::INTERVAL
     ),
     (
+        38,
         'Old Flames (Can''t Hold a Candle to You) (feat. DP)',
         3,
         11,
-        '00:04:26'
+        '00:04:26'::INTERVAL
     ),
     (
+        39,
         'Godzilla',
         3,
         13,
-        '00:02:08'
+        '00:02:08'::INTERVAL
     ),
     (
+        40,
         'Spaceship',
         3,
         14,
-        '00:05:15'
-    );
--- Album 4 tracks
-INSERT INTO songs (title, album_id, track_number, duration)
-VALUES (
+        '00:05:15'::INTERVAL
+    ),
+    (
+        41,
         'Tonight',
         4,
         1,
-        '00:03:15'
+        '00:03:15'::INTERVAL
     ),
     (
+        42,
         'My Own Dance',
         4,
         2,
-        '00:02:41'
+        '00:02:41'::INTERVAL
     ),
     (
+        43,
         'Raising Hell (featuring Big Freedia)',
         4,
         3,
-        '00:02:49'
+        '00:02:49'::INTERVAL
     ),
     (
+        44,
         'High Road',
         4,
         4,
-        '00:03:19'
+        '00:03:19'::INTERVAL
     ),
     (
+        45,
         'Shadow',
         4,
         5,
-        '00:03:33'
+        '00:03:33'::INTERVAL
     ),
     (
+        46,
         'Honey',
         4,
         6,
-        '00:03:21'
+        '00:03:21'::INTERVAL
     ),
     (
+        47,
         'Cowboy Blues',
         4,
         7,
-        '00:04:00'
+        '00:04:00'::INTERVAL
     ),
     (
+        48,
         'Resentment (feat. Brian Wilson, Sturgill Simpson & Wrabel)',
         4,
         8,
-        '00:02:52'
+        '00:02:52'::INTERVAL
     ),
     (
+        49,
         'Little Bit of Love',
         4,
         9,
-        '00:02:22'
+        '00:02:22'::INTERVAL
     ),
     (
+        50,
         'Birthday Suit (featuring Eagles of Death Metal)',
         4,
         10,
-        '00:02:56'
+        '00:02:56'::INTERVAL
     ),
     (
+        51,
         'Kinky (featuring Ke$ha)',
         4,
         11,
-        '00:03:25'
+        '00:03:25'::INTERVAL
     ),
     (
+        52,
         'Potato Song (Cuz I Want To)',
         4,
         11,
-        '00:03:33'
+        '00:03:33'::INTERVAL
     ),
     (
+        53,
         'BFF (featuring Wrabel)',
         4,
         13,
-        '00:04:11'
+        '00:04:11'::INTERVAL
     ),
     (
+        54,
         'Father Daughter Dance',
         4,
         14,
-        '00:02:37'
+        '00:02:37'::INTERVAL
     ),
     (
+        55,
         'Chasing Thunder',
         4,
         15,
-        '00:03:41'
-    );
--- Album 5 tracks
-INSERT INTO songs (title, album_id, track_number, duration)
-VALUES (
+        '00:03:41'::INTERVAL
+    ),
+    (
+        56,
         'Something to Believe In',
         5,
         1,
-        '00:03:29'
+        '00:03:29'::INTERVAL
     ),
     (
+        57,
         'Eat the Acid',
         5,
         2,
-        '00:04:03'
+        '00:04:03'::INTERVAL
     ),
     (
+        58,
         'Living in My Head',
         5,
         3,
-        '00:03:06'
+        '00:03:06'::INTERVAL
     ),
     (
+        59,
         'Fine Line',
         5,
         4,
-        '00:03:26'
+        '00:03:26'::INTERVAL
     ),
     (
+        60,
         'Only Love Can Save Us Now',
         5,
         5,
-        '00:02:34'
+        '00:02:34'::INTERVAL
     ),
     (
+        61,
         'All I Need Is You',
         5,
         6,
-        '00:03:01'
+        '00:03:01'::INTERVAL
     ),
     (
+        62,
         'The Drama',
         5,
         7,
-        '00:04:23'
+        '00:04:23'::INTERVAL
     ),
     (
+        63,
         'Ram Dass Interlude',
         5,
         8,
-        '00:01:14'
+        '00:01:14'::INTERVAL
     ),
     (
+        64,
         'Too Far Gone',
         5,
         9,
-        '00:02:17'
+        '00:02:17'::INTERVAL
     ),
     (
+        65,
         'Peace & Quiet',
         5,
         10,
-        '00:02:57'
+        '00:02:57'::INTERVAL
     ),
     (
+        66,
         'Only Love Reprise',
         5,
         11,
-        '00:01:15'
+        '00:01:15'::INTERVAL
     ),
     (
+        67,
         'Hate Me Harder',
         5,
         12,
-        '00:02:48'
+        '00:02:48'::INTERVAL
     ),
     (
+        68,
         'Happy',
         5,
         13,
-        '00:04:22'
+        '00:04:22'::INTERVAL
+    ),
+    (
+        69,
+        'Freedom',
+        6,
+        1,
+        '00:00:00'::INTERVAL
+    ),
+    (
+        70,
+        'Joyride',
+        6,
+        2,
+        '00:02:30'::INTERVAL
+    ),
+    (
+        71,
+        'Yippee-Ki-Yay',
+        6,
+        3,
+        '00:02:38'::INTERVAL
+    ),
+    (
+        72,
+        'Delusional',
+        6,
+        4,
+        '00:03:34'::INTERVAL
+    ),
+    (
+        73,
+        'Red Flag',
+        6,
+        5,
+        '00:00:00'::INTERVAL
+    ),
+    (
+        74,
+        'Love Forever',
+        6,
+        6,
+        '00:00:00'::INTERVAL
+    ),
+    (
+        75,
+        'The One',
+        6,
+        7,
+        '00:00:00'::INTERVAL
+    ),
+    (
+        76,
+        'Boy Crazy',
+        6,
+        8,
+        '00:00:00'::INTERVAL
+    ),
+    (
+        77,
+        'Glow',
+        6,
+        9,
+        '00:00:00'::INTERVAL
+    ),
+    (
+        78,
+        'Too Hard',
+        6,
+        10,
+        '00:00:00'::INTERVAL
+    ),
+    (
+        79,
+        'Cathedral',
+        6,
+        11,
+        '00:00:00'::INTERVAL
     );
--- Album 6 tracks
-INSERT INTO songs (title, album_id, track_number, duration)
-VALUES ('Freedom', 6, 1, '00:00:00'),
-    ('Joyride', 6, 2, '00:02:30'),
-    ('Yippee-Ki-Yay', 6, 3, '00:02:38'),
-    ('Delusional', 6, 4, '00:03:34'),
-    ('Red Flag', 6, 5, '00:00:00'),
-    ('Love Forever', 6, 6, '00:00:00'),
-    ('The One', 6, 7, '00:00:00'),
-    ('Boy Crazy', 6, 8, '00:00:00'),
-    ('Glow', 6, 9, '00:00:00'),
-    ('Too Hard', 6, 10, '00:00:00'),
-    ('Cathedral', 6, 11, '00:00:00');
