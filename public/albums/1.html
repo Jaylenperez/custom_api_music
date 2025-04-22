@@ -53,23 +53,7 @@
         <span id="song-count" class="meta-item count">Song Count</span>
       </p><code><aside></code>
         <table class="table table-dark">
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Your Love Is My Drug</td>
-                <td>3:32</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>TiK ToK</td>
-                <td>3:56</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Take it Off</td>
-                <td>3:35</td>
-              </tr>
-            </tbody>
+            <tbody id="songs-tbody"></tbody>
         </table>
         <a href="../index.html">← Back to all albums</a>
     </p>
@@ -82,28 +66,68 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
-            const res    = await fetch('/data/albums');
-            const { albums } = await res.json();
-            if (albums.length > 0) {
-                const album = albums[0];
-                // title
-                document
-                .getElementById('album-title-text')
-                .textContent = album.title;
-                // release year
-                document
-                .getElementById('release-year')
-                .textContent = album.release_year;
-                // song count
-                const count = album.song_count;
-                document
-                .getElementById('song-count')
-                .textContent = `${count} ${count === 1 ? 'song' : 'songs'}`;
+          try {
+            // 1) Fetch album metadata
+            const resAlbums = await fetch('/data/albums');
+            if (!resAlbums.ok) throw new Error(`Albums fetch failed: ${resAlbums.status}`);
+            const { albums } = await resAlbums.json();
+            if (albums.length === 0) return;
+            const album = albums[0];
+      
+            // 2) Populate title, year & song‑count
+            document
+              .getElementById('album-title-text')
+              .textContent = album.title;
+      
+            const yearEl = document.getElementById('release-year');
+            if (album.release_year) {
+              yearEl.textContent = album.release_year;
+            } else if (album.release_date) {
+              yearEl.textContent = new Date(album.release_date).getFullYear();
             }
+      
+            const count = album.song_count;
+            document
+              .getElementById('song-count')
+              .textContent = `${count} ${count === 1 ? 'song' : 'songs'}`;
+      
+            // 3) Fetch all songs, filter for this album
+            const resSongs = await fetch('/data/songs');
+            if (!resSongs.ok) throw new Error(`Songs fetch failed: ${resSongs.status}`);
+            const { songs } = await resSongs.json();
+            const albumSongs = songs.filter(s => s.album_id === album.id);
+      
+            // 4) Render each song into the table
+            const tbody = document.getElementById('songs-tbody');
+            tbody.innerHTML = '';  // clear any placeholders
+      
+            albumSongs.forEach(({ track_number, title, duration }) => {
+              // turn {hours, minutes, seconds} → "M:SS"
+              let durStr;
+              if (duration && typeof duration === 'object') {
+                const { hours = 0, minutes = 0, seconds = 0 } = duration;
+                const totalMin = hours * 60 + minutes;
+                const secPadded = String(seconds).padStart(2, '0');
+                durStr = `${totalMin}:${secPadded}`;
+              } else {
+                durStr = duration;
+              }
+      
+              const tr = document.createElement('tr');
+              tr.innerHTML = `
+                <th scope="row">${track_number}</th>
+                <td>${title}</td>
+                <td>${durStr}</td>
+              `;
+              tbody.appendChild(tr);
+            });
+          } catch (err) {
+            console.error('Error loading album page:', err);
+          }
         });
-
-
       </script>
+      
+        
       
 </body>
 
