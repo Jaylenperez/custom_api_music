@@ -26,18 +26,32 @@
         .album-img {
             width: 250px;
             height: 250px;
-          }
+        }
+
+        .metadata .meta-item {
+        margin-right: 0.5rem;
+        }
+
+        .metadata .meta-item + .meta-item::before {
+        content: "|";
+        margin-right: 0.5rem;
+        }
+
     </style>
 </head>
 
 <body>
     <h1 id="album-title">
-        <span id="album-title-text">Album Title</span>
+        <span id="album-title-text"> </span>
         <aside>
           <img src="../images/Animal.jpg" class="album-img" alt="Animal Album Cover">
         </aside>
       </h1>
-    <p>Album | Year | Song Count <code><aside></code>
+      <p class="metadata">
+        <span class="meta-item album">Album</span>
+        <span id="release-year" class="meta-item year">Year</span>
+        <span id="song-count" class="meta-item count">Song Count</span>
+      </p><code><aside></code>
         <table class="table table-dark">
             <tbody>
               <tr>
@@ -68,12 +82,23 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
-            const res = await fetch('/data/albums');
+            const res    = await fetch('/data/albums');
             const { albums } = await res.json();
             if (albums.length > 0) {
+                const album = albums[0];
+                // title
                 document
                 .getElementById('album-title-text')
-                .textContent = albums[0].title;
+                .textContent = album.title;
+                // release year
+                document
+                .getElementById('release-year')
+                .textContent = album.release_year;
+                // song count
+                const count = album.song_count;
+                document
+                .getElementById('song-count')
+                .textContent = `${count} ${count === 1 ? 'song' : 'songs'}`;
             }
         });
 
