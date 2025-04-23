@@ -76,11 +76,21 @@
         document.addEventListener('DOMContentLoaded', async () => {
             try {
                 // 1) Fetch album metadata
+                // 1) figure out which album page we're on:
+                const fileName = window.location.pathname.split('/').pop();  // "5.html"
+                const albumId   = parseInt(fileName.replace('.html',''), 10); // 5
+
+                // 2) fetch the list & find that one
                 const resAlbums = await fetch('/data/albums');
                 if (!resAlbums.ok) throw new Error(`Albums fetch failed: ${resAlbums.status}`);
                 const { albums } = await resAlbums.json();
-                if (albums.length === 0) return;
-                const album = albums[0];
+
+                // 3) grab the right album
+                const album = albums.find(a => a.id === albumId);
+                if (!album) {
+                console.error(`No album with id=${albumId}`);
+                return;
+                }
 
                 // 2) Populate title
                 document.getElementById('album-title-text').textContent = album.title;

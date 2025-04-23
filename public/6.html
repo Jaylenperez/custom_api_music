@@ -47,7 +47,7 @@
     <h1 id="album-title">
         <span id="album-title-text"></span>
         <aside>
-            <img src="../images/Animal.jpg" class="album-img" alt="Animal Album Cover">
+            <img src="../images/Period.png" class="album-img" alt="Animal Album Cover">
             <span id="release-date" class="meta-item date"></span>
             <span class="song-count meta-item count"></span>
             <span id="album-duration" class="meta-item album-length"></span>
@@ -73,109 +73,109 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            try {
-                // 1) Fetch album metadata
-                const resAlbums = await fetch('/data/albums');
-                if (!resAlbums.ok) throw new Error(`Albums fetch failed: ${resAlbums.status}`);
-                const { albums } = await resAlbums.json();
-                if (albums.length === 6) return;
-                const album = albums[5];
-
-                // 2) Populate title
-                document.getElementById('album-title-text').textContent = album.title;
-
-                // 3) Populate release year
-                const yearEl = document.getElementById('release-year');
-                if (album.release_year) {
-                    yearEl.textContent = album.release_year;
-                } else if (album.release_date) {
-                    yearEl.textContent = new Date(album.release_date).getFullYear();
-                }
-
-                // 4) Populate full release date under the image
-                if (album.release_date) {
-                    const dateEl = document.getElementById('release-date');
-                    const dt = new Date(album.release_date);
-                    dateEl.textContent = dt.toLocaleDateString(undefined, {
-                        month: 'long',
-                        day: 'numeric',
-                        year: 'numeric'
-                    });
-                }
-
-                // 5) Populate song count in both spots
-                const count = album.song_count;
-                const countText = `${count} ${count === 1 ? 'song' : 'songs'}`;
-                document.querySelectorAll('.song-count').forEach(el => {
-                    el.textContent = countText;
-                });
-
-                // 6) Populate total album duration
-                if (album.duration != null) {
-                    const dur = album.duration;
-                    let albumDurStr = '';
-
-                    // Helper to format hours and minutes
-                    function fmt(h, m) {
-                        const parts = [];
-                        if (h) parts.push(`${h} hr`);
-                        if (m) parts.push(`${m} min`);
-                        return parts.join(' ');
-                    }
-
-                    if (typeof dur === 'object') {
-                        const { hours = 0, minutes = 0 } = dur;
-                        albumDurStr = fmt(hours, minutes);
-                    } else if (typeof dur === 'string') {
-                        const parts = dur.split(':').map(Number);
-                        let hours = 0, minutes = 0;
-                        if (parts.length === 3) {
-                            [hours, minutes] = parts;
-                        } else if (parts.length === 2) {
-                            [minutes] = parts;
-                        }
-                        albumDurStr = fmt(hours, minutes);
-                    } else {
-                        albumDurStr = String(dur);
-                    }
-
-                    document.getElementById('album-duration').textContent = albumDurStr;
-                }
-
-                // 7) Fetch & render tracks
-                const resSongs = await fetch('/data/songs');
-                if (!resSongs.ok) throw new Error(`Songs fetch failed: ${resSongs.status}`);
-                const { songs } = await resSongs.json();
-                const albumSongs = songs.filter(s => s.album_id === album.id);
-
-                const tbody = document.getElementById('songs-tbody');
-                tbody.innerHTML = '';
-
-                albumSongs.forEach(({ track_number, title, duration }) => {
-                    let durStr;
-                    if (duration && typeof duration === 'object') {
-                        const { hours = 0, minutes = 0, seconds = 0 } = duration;
-                        const totalMin = hours * 60 + minutes;
-                        const secPadded = String(seconds).padStart(2, '0');
-                        durStr = `${totalMin}:${secPadded}`;
-                    } else {
-                        durStr = duration;
-                    }
-
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <th scope="row">${track_number}</th>
-                        <td>${title}</td>
-                        <td>${durStr}</td>
-                    `;
-                    tbody.appendChild(tr);
-                });
-            } catch (err) {
-                console.error('Error loading album page:', err);
+      document.addEventListener('DOMContentLoaded', async () => {
+        try {
+          // 1) Fetch all albums
+          const resAlbums = await fetch('/data/albums');
+          if (!resAlbums.ok) throw new Error(`Albums fetch failed: ${resAlbums.status}`);
+          const { albums } = await resAlbums.json();
+      
+          // 2) Grab the sixth row (index 5)
+          const album = albums[5];
+          if (!album) {
+            console.error('No sixth album in data');
+            return;
+          }
+      
+          // 3) Populate title
+          document.getElementById('album-title-text').textContent = album.title;
+      
+          // 4) Populate release year
+          const yearEl = document.getElementById('release-year');
+          if (album.release_year) {
+            yearEl.textContent = album.release_year;
+          } else if (album.release_date) {
+            yearEl.textContent = new Date(album.release_date).getFullYear();
+          }
+      
+          // 5) Populate full release date under the image
+          if (album.release_date) {
+            const dateEl = document.getElementById('release-date');
+            const dt = new Date(album.release_date);
+            dateEl.textContent = dt.toLocaleDateString(undefined, {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric'
+            });
+          }
+      
+          // 6) Populate song count in both spots
+          const count = album.song_count;
+          const countText = `${count} ${count === 1 ? 'song' : 'songs'}`;
+          document.querySelectorAll('.song-count').forEach(el => {
+            el.textContent = countText;
+          });
+      
+          // 7) Populate total album duration
+          if (album.duration != null) {
+            const dur = album.duration;
+            let albumDurStr = '';
+            function fmt(h, m) {
+              const parts = [];
+              if (h) parts.push(`${h} hr`);
+              if (m) parts.push(`${m} min`);
+              return parts.join(' ');
             }
-        });
-    </script>
+            if (typeof dur === 'object') {
+              const { hours = 0, minutes = 0 } = dur;
+              albumDurStr = fmt(hours, minutes);
+            } else if (typeof dur === 'string') {
+              const parts = dur.split(':').map(Number);
+              let hours = 0, minutes = 0;
+              if (parts.length === 3) {
+                [hours, minutes] = parts;
+              } else if (parts.length === 2) {
+                [minutes] = parts;
+              }
+              albumDurStr = fmt(hours, minutes);
+            } else {
+              albumDurStr = String(dur);
+            }
+            document.getElementById('album-duration').textContent = albumDurStr;
+          }
+      
+          // 8) Fetch & render tracks for that album
+          const resSongs = await fetch('/data/songs');
+          if (!resSongs.ok) throw new Error(`Songs fetch failed: ${resSongs.status}`);
+          const { songs } = await resSongs.json();
+          const albumSongs = songs.filter(s => s.album_id === album.id);
+      
+          const tbody = document.getElementById('songs-tbody');
+          tbody.innerHTML = '';
+      
+          albumSongs.forEach(({ track_number, title, duration }) => {
+            let durStr;
+            if (duration && typeof duration === 'object') {
+              const { hours = 0, minutes = 0, seconds = 0 } = duration;
+              const totalMin = hours * 60 + minutes;
+              const secPadded = String(seconds).padStart(2, '0');
+              durStr = `${totalMin}:${secPadded}`;
+            } else {
+              durStr = duration;
+            }
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <th scope="row">${track_number}</th>
+              <td>${title}</td>
+              <td>${durStr}</td>
+            `;
+            tbody.appendChild(tr);
+          });
+        } catch (err) {
+          console.error('Error loading album page:', err);
+        }
+      });
+      </script>      
 </body>
 
 </html>
