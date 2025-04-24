@@ -22,4 +22,7 @@
   
     object-fit: cover;
   }
-  
+
+.navbar-black {
+    background-color: #000 !important;
+  }
