@@ -1,4 +1,6 @@
 const express = require('express');
+const morgan = require('morgan');
+const logger = require('./logger')
 const path = require('path');
 const app = express();
 
@@ -8,16 +10,23 @@ const dataRouter = require('./routes/data.routes');
 const { errorHandler } = require('./middlewares/errorhandler');
 dotenv.config();
 
-// Parse JSON bodies (for API routes)
-app.use(express.json());
+// HTTP request logging via morgan -> winston
+app.use(morgan('combined', {
+    stream: { write: msg => logger.info(msg.trim()) }
+}));
 
-// still serve your CSS/images/fonts from “public”
+
+// JSON & Static middleware
+app.use(express.json());
 app.use(express.static('public'));
 
+// Routers
 app.use('/export', exportRouter);
-
 app.use('/data', dataRouter);
 
-app.use(errorHandler);
+app.use((err, req, res, next) => {
+    logger.error('Unhandled error', { message: err.message, stack: err.stack });
+    errorHandler(err, req, res, next);
+});
 
 module.exports = app;
